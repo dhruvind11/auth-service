@@ -13,7 +13,7 @@ const {
 const router = express.Router();
 
 // Public routes
-router.post("/signup", authLimiter, signupRules, signup);
+router.post("/signup", signupRules, signup);
 router.post("/signin", authLimiter, signinRules, signin);
 router.post("/refresh-token", refreshTokenHandler);
 
