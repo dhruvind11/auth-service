@@ -1,6 +1,6 @@
 const express = require("express");
 const { emailRules, otpVerifyRules } = require("../middleware/validate.middleware");
-const { otpLimiter } = require("../middleware/rateLimiter.middleware");
+// const { otpLimiter } = require("../middleware/rateLimiter.middleware");
 const {
   sendOtp,
   verifyOtpHandler,
@@ -9,8 +9,8 @@ const {
 
 const router = express.Router();
 
-router.post("/send", otpLimiter, emailRules, sendOtp);
+router.post("/send", emailRules, sendOtp);
 router.post("/verify", otpVerifyRules, verifyOtpHandler);
-router.post("/resend", otpLimiter, emailRules, resendOtp);
+router.post("/resend", emailRules, resendOtp);
 
 module.exports = router;
